@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Homepage from './components/Homepage'
+import { BrowserRouter as Router,Route,Switch } from 'react-router-dom';
+import Description from './components/Description';
+ 
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
 
-export default App;
+  const App = (props) => {
+    const {superData=[]}=props;
+    console.log(superData);
+      return (
+        
+          <div className="app">
+              <Router>
+                  <Switch>
+                      <Route path="/" exact>
+                      <Homepage/>
+                      </Route>
+                      {/* <Route path="/description" exact> */}
+                          {/* <Description {...superData.map((superhero) =>
+    <Card data={superhero}/>)}/> */}
+    <Route exact path="/description/:id" component={Description}/>
+                      {/* </Route> */}
+                  </Switch>
+              </Router>
+             
+          </div>
+      )
+  }
+  
+  export default App
+  
+
